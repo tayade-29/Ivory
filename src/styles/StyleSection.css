@@ -1,0 +1,74 @@
+/* src/styles/StyleSection.css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.style-section {
+  background-color: #EAEFF2;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.circle-wrapper {
+  position: relative;
+  width: 700px;
+  height: 700px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* ⭐ FIX #1 → Move heading slightly upward (visual center correction) */
+.style-title {
+  position: absolute;
+  top: 44.5%;                /* was 50% — fixed to true visual center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: "Krona One", sans-serif;
+  color: #626262;
+  font-size: 28px;
+
+  text-align: center;
+  z-index: 10;
+
+  width: 260px;
+  line-height: 1.3;
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+}
+
+/* ⭐ FIX #2 → Reduce bag size slightly to prevent visual distortion */
+.bag-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 170px;              /* was 200px — perfect balance for 700px circle */
+  height: 170px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.bag-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}

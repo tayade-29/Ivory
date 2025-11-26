@@ -1,0 +1,26 @@
+.ending-section {
+  background-color: #DDEAF4;
+  width: 100vw;
+  height: 260px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.ending-text-wrapper {
+  text-align: center;
+}
+
+.ending-line {
+  font-family: "Krona One", sans-serif;
+  color: #626262;
+  font-size: 26px;
+  margin: 10px 0;
+  opacity: 0; /* GSAP starts hidden */
+}
+
+.brand {
+  color: #626262;
+  font-weight: bold;
+}
