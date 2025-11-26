@@ -106,8 +106,9 @@ html, body {
   }
 
   .style-title {
-     font-size: 24px;
-    top: 42%;
+    width: 55%;         /* narrower title */
+    font-size: 20px;
+    top: 40%;           /* moved upward */
   }
 }
 
@@ -128,7 +129,9 @@ html, body {
   }
 
   .style-title {
-    font-size: 12px;
-    width: 70%;
+    width: 50%;         /* keeps the text inside circle */
+    font-size: 14px;
+    top: 38%;           /* higher for safety */
+    line-height: 1.2;
   }
 }

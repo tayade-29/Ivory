@@ -63,7 +63,7 @@ useEffect(() => {
     boxRefs.current.forEach((box, idx) => {
       gsap.to(box, {
         scale: idx === nextIndex ? 1.6 : 1,
-        duration: 0.8,
+        duration: 0.5,
         ease: "power2.out"
       });
     });
