@@ -1,8 +1,8 @@
 /* src/styles/Hero.css */
-
 .hero-section {
   background: #DDEAF4;
-  min-height: 100vh;
+  min-height: 100svh;   /* FIXED: better viewport behavior */
+  height: auto;         /* allow content to grow */
   overflow: hidden;
   display: flex;
   align-items: flex-start;
@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-family: "Krona One", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
+
 
 .hero-inner {
   width: 1200px;
@@ -90,6 +91,10 @@
 }
 
 @media (max-width: 920px) {
+  .hero-section {
+    min-height: 110svh;   /* give extra height so content fits */
+    padding-bottom: 60px;
+  }
   .hero-headline .word {
     display: inline-block;
     margin-bottom: 0;
@@ -122,6 +127,10 @@
 }
 
 @media (max-width: 600px) {
+   .hero-section {
+    min-height: auto;     /* let items stack naturally */
+    padding: 20px;
+  }
  .hero-inner {
     grid-template-columns: 1fr; /* stack everything vertically */
     text-align: left;
@@ -153,6 +162,10 @@
 }
 
 @media (max-width: 420px) {
+  .hero-section {
+    min-height: auto;
+    padding: 15px;
+  }
   
   .hero-right {
     position: static;

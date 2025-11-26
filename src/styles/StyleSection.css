@@ -8,7 +8,9 @@ html, body {
 .style-section {
   background-color: #EAEFF2;
   width: 100vw;
-  height: 100vh;
+
+  min-height: 100svh;   /* FIX: safe viewport height */
+  height: auto;
 
   display: flex;
   justify-content: center;
@@ -82,10 +84,17 @@ html, body {
     width: min(85vw, 550px);
     height: min(85vw, 550px);
   }
+  .style-section {
+    min-height: 110svh; /* give more breathing space for circle */
+  }
 }
 
 /* Large Mobiles */
 @media (max-width: 600px) {
+  .style-section {
+    min-height: auto;   /* let layout expand naturally */
+    padding: 40px 0;    /* slight breathing room */
+  }
   .circle-wrapper {
     width: min(90vw, 420px);
     height: min(90vw, 420px);
@@ -103,6 +112,10 @@ html, body {
 
 /* Small Phones */
 @media (max-width: 400px) {
+  .style-section {
+    min-height: auto;
+    padding: 30px 0;
+  }
   .circle-wrapper {
     width: min(95vw, 340px);
     height: min(95vw, 340px);

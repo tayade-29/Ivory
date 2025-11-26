@@ -34,8 +34,8 @@ useEffect(() => {
     let radius = 0;
     if (screenWidth > 1200) radius = 260;        // Large screens
     else if (screenWidth > 900) radius = 220;    // Laptops / Tablets landscape
-    else if (screenWidth > 600) radius = 180;    // Tablets portrait
-    else if (screenWidth > 420) radius = 140;    // Mobile phones
+    else if (screenWidth > 600) radius = 200;    // Tablets portrait
+    else if (screenWidth > 420) radius = 180;    // Mobile phones
     else radius = 110;                            // Very small phones
 
     // Position bags around circle
