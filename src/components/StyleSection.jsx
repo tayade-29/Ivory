@@ -22,36 +22,57 @@ const StyleSection = () => {
   const boxRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-  const radius = 260; // increased radius
-  const total = bags.length;
-  const angleStep = 360 / total;
 
-  // Position boxes in a circle
-  boxRefs.current.forEach((box, i) => {
-    const angle = i * angleStep - 90;
-    gsap.set(box, {
-      x: radius * Math.cos((angle * Math.PI) / 180),
-      y: radius * Math.sin((angle * Math.PI) / 180),
-      scale: i === activeIndex ? 1.5 : 1,
+useEffect(() => {
+  const updatePositions = () => {
+    const total = bags.length;
+    const angleStep = 360 / total;
+
+    // ⭐ RESPONSIVE RADIUS BASED ON SCREEN SIZE
+    const screenWidth = window.innerWidth;
+
+    let radius = 0;
+    if (screenWidth > 1200) radius = 260;        // Large screens
+    else if (screenWidth > 900) radius = 220;    // Laptops / Tablets landscape
+    else if (screenWidth > 600) radius = 180;    // Tablets portrait
+    else if (screenWidth > 420) radius = 140;    // Mobile phones
+    else radius = 110;                            // Very small phones
+
+    // Position bags around circle
+    boxRefs.current.forEach((box, i) => {
+      const angle = i * angleStep - 90;
+
+      gsap.set(box, {
+        x: radius * Math.cos((angle * Math.PI) / 180),
+        y: radius * Math.sin((angle * Math.PI) / 180),
+        scale: i === activeIndex ? 1.5 : 1
+      });
     });
-  });
+  };
 
-  // Auto-rotate the active box
+  updatePositions(); // initial call
+
+  // Recalculate on resize
+  window.addEventListener("resize", updatePositions);
+
+  // Auto-rotate active bag every 3 sec
   const interval = setInterval(() => {
-    const nextIndex = (activeIndex + 1) % total;
+    const nextIndex = (activeIndex + 1) % bags.length;
     setActiveIndex(nextIndex);
 
     boxRefs.current.forEach((box, idx) => {
       gsap.to(box, {
         scale: idx === nextIndex ? 1.6 : 1,
         duration: 0.8,
-        ease: "power2.out",
+        ease: "power2.out"
       });
     });
   }, 3000);
 
-  return () => clearInterval(interval);
+  return () => {
+    window.removeEventListener("resize", updatePositions);
+    clearInterval(interval);
+  };
 }, [activeIndex]);
 
 

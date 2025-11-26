@@ -17,10 +17,11 @@ html, body {
   position: relative;
 }
 
+/* CIRCLE WRAPPER – Fully Responsive */
 .circle-wrapper {
   position: relative;
-  width: 700px;
-  height: 700px;
+  width: min(80vw, 700px);     /* scales on all devices */
+  height: min(80vw, 700px);
 
   display: flex;
   justify-content: center;
@@ -28,35 +29,35 @@ html, body {
   pointer-events: none;
 }
 
-/* ⭐ FIX #1 → Move heading slightly upward (visual center correction) */
+/* HEADING – Responsive text + centered */
 .style-title {
   position: absolute;
-  top: 44.5%;                /* was 50% — fixed to true visual center */
+  top: 44.5%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   font-family: "Krona One", sans-serif;
   color: #626262;
-  font-size: 28px;
 
+  font-size: clamp(16px, 3vw, 30px);   /* responsive font */
   text-align: center;
   z-index: 10;
 
-  width: 260px;
+  width: min(60%, 280px);
   line-height: 1.3;
   white-space: normal;
   word-break: break-word;
   pointer-events: none;
 }
 
-/* ⭐ FIX #2 → Reduce bag size slightly to prevent visual distortion */
+/* BAG BOX – Responsive size + centered */
 .bag-box {
   position: absolute;
   top: 50%;
   left: 50%;
 
-  width: 170px;              /* was 200px — perfect balance for 700px circle */
-  height: 170px;
+  width: clamp(90px, 20vw, 190px);   /* auto scales smoothly */
+  height: clamp(90px, 20vw, 190px);
 
   display: flex;
   justify-content: center;
@@ -71,4 +72,49 @@ html, body {
   height: auto;
   display: block;
   pointer-events: none;
+}
+
+/* ---------- MEDIA QUERIES FOR FINER CONTROL ---------- */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .circle-wrapper {
+    width: min(85vw, 550px);
+    height: min(85vw, 550px);
+  }
+}
+
+/* Large Mobiles */
+@media (max-width: 600px) {
+  .circle-wrapper {
+    width: min(90vw, 420px);
+    height: min(90vw, 420px);
+  }
+
+  .bag-box {
+    width: clamp(80px, 25vw, 150px);
+    height: clamp(80px, 25vw, 150px);
+  }
+
+  .style-title {
+    top: 42%;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 400px) {
+  .circle-wrapper {
+    width: min(95vw, 340px);
+    height: min(95vw, 340px);
+  }
+
+  .bag-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  .style-title {
+    font-size: 14px;
+    width: 70%;
+  }
 }
